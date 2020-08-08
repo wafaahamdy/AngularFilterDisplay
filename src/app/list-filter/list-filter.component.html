@@ -1,0 +1,47 @@
+ 
+<div class="header">
+
+</div>
+
+<div class="container">
+
+    <div class="filter clearfix" *ngIf = "filters.length > 0">
+     <div class="filter_in">
+       <div class="filter_tag" *ngFor="let filter of filters ; let i = index">
+           <span>  {{filter}}</span> 
+            <button (click) = "delfilter(i)"> X </button>  
+         </div>
+    
+     </div>   
+  <div class="filter_clear"> <button (click) = "clearFilter()"> Clear </button></div>
+    </div>
+
+    <div class="errormsg" *ngIf = "err"> {{err}}</div>
+    <div class="card clearfix" *ngFor="let item of Clist  | rolefilter : filters ">
+        <div class="card_image">
+            <img src="../../assets/{{item.logo}}" alt="">
+        </div>
+        <div class="card_content">
+            <div class="card_labels">
+                <span class="card_labels_company">{{item.company}} </span>
+                <span class="card_labels_flag new" *ngIf = "item.new" > NEW!</span>
+                <span class="card_labels_flag featured" *ngIf = "item.featured"> featured </span>
+            </div>
+            <h3 class="card_title"> {{item.position}}</h3>
+            <ul class="card_info">
+                <li>{{item.postedAt}}</li>
+                <li>{{item.contract}}</li>
+                <li>{{item.location}}</li>
+            </ul>
+        </div>
+
+        <div class="card_tags">
+            <div> <button (click) = "addFilter(item.role , 'role')"> {{item.role}} </button> <button (click) = "addFilter(item.level , 'level')"> {{item.level}} </button> 
+            <button *ngFor="let language of item.languages" (click) = "addFilter(language , 'language')" > {{language}}</button></div>
+            
+        </div>
+
+      
+
+</div>
+ 
