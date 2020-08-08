@@ -1,4 +1,4 @@
-##  NgListFilter
+##  Angular list filter
 Angular app to filter displayed list of data based of set of values by using filter pipe
 Styles made using SCSS
 
